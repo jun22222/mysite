@@ -1,0 +1,10 @@
+<ul>    <!-- ul 은 반복되면 안됨-->
+{% for q in question %}     <!-- 출력시 -->
+    <li>
+        <!--<a href = '{{ q.id }}/detail'>    &lt;!&ndash; 상대경로 === 현재경로 + 입력된 경로&ndash;&gt;-->
+        <a href = "{% url 'detail' q.id %}">   <!-- poll의 url 로 ㄱㄱ -->
+            {{ q.question_text }}
+        </a>
+    </li>
+{% endfor %}
+</ul>

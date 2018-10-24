@@ -1,0 +1,7 @@
+<form action = 'add_question' method = "post">
+    질문 : <input type = 'text' name = 'text'>    <!--# view의 텍스트랑 맞춰-->
+    <br>
+    {% csrf_token %}
+    <input type = 'submit'>
+
+</form>
