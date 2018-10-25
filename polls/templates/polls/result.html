@@ -1,0 +1,11 @@
+<!-- 결과페이지를 어떻게 만들까?
+     질문을 보여주고 보기 1은 몇표 보기 2는 몇표-->
+
+질문 : {{ question.question_text }}
+
+
+<br>
+{% for choice in question.choice_set.all %}
+    {{ choice.choice_text }} --> {{ choice.votes }}<br>
+{% endfor %}
+

@@ -3,13 +3,19 @@ from django.shortcuts import render
 from polls.models import Question, Choice
 from django.utils import timezone
 
+
+def result(request, id):
+    question = Question.objects.get(pk = id)
+    return render(request, 'polls/result.html', {'question': question})
+
+
+
+
+
+
+
 def input(request):
     return render(request, 'polls/input.html', {})
-
-
-
-
-
 
 def puut(request, id):
     que = Question.objects.get(id = id)
@@ -18,20 +24,20 @@ def puut(request, id):
 
 def add_question(request):
     text = request.POST['text']
-    q = Question(
-        question_text = text,
-        pub_date=timezone.now())
-    q.save()
-    return render(request, 'polls/add.html', {})
+    # q = Question(
+    #     question_text = text,
+    #     pub_date=timezone.now())
+    # q.save()
+    # return render(request, 'polls/add.html', {})
     return HttpResponse('입력완료')
 
 
 
-def data(request):     #<!--데이터가 넘어간디야~~~-->
+def data(request, email, number):     #<!--데이터가 넘어간디야~~~-->
    #http://localhost:8000/polls/data?user_name=kim (GET방식)
-    value = request.GET['user_name']
+    value = request.GET['user_name']    # ? 형식
 
-    return HttpResponse(value)
+    return HttpResponse(value + email + str(number))
 
 def vote(request):
     choice = request.POST['choice']

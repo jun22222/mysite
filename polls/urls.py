@@ -20,16 +20,19 @@ from . import views
    # ???
 
 urlpatterns = [
+    path('result/<int:id>', views.result),
     path('add_question', views.add_question),
-    path('data', views.data),
+    path('<int:number>/data/<str:email>', views.data),
+        #  변수 설정 내맘
     # path('', admin.site.urls),
     path('', views.index),
        # polls만 입력받으면 일로 넘어옴
        #    views로 ㄱㄱ
 
     # viee
+        # 주소에 입력하는 규칙을 만들때 변화되는 부분을 int: id처럼 설정할 수 있음
     path('<int:id>', views.detail, name='detail'),
     path('vote/', views.vote, name = 'vote'),
     path('input',views.input),
-
+   # /가 있고 없고?
 ]
